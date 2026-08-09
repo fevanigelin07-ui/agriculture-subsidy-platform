@@ -20,5 +20,16 @@ def home():
     <br>
     <a href="/applications">View Applications</a>
     """
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route("/apply", methods=["POST"])
+def apply():
+    app_id = len(applications) + 1
+
+    applications.append({
+        "id": app_id,
+        "name": request.form["name"],
+        "crop": request.form["crop"],
+        "subsidy": request.form["subsidy"],
+        "status": "Pending"
+    })
+
+    return redirect("/applications")
