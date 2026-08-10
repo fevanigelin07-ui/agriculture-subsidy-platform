@@ -33,3 +33,36 @@ def apply():
     })
 
     return redirect("/applications")
+@app.route("/applications")
+def view_applications():
+    result = "<h1>Subsidy Applications</h1>"
+
+    if not applications:
+        result += "<p>No applications found.</p>"
+
+    for a in applications:
+        result += f"""
+        <hr>
+        <b>Application ID:</b> {a['id']}<br>
+        <b>Farmer:</b> {a['name']}<br>
+        <b>Crop:</b> {a['crop']}<br>
+        <b>Subsidy:</b> {a['subsidy']}<br>
+        <b>Status:</b> {a['status']}<br>
+        """
+
+    result += '<br><a href="/">New Application</a>'
+    return result
+
+
+@app.route("/update/<int:id>/<status>")
+def update(id, status):
+    for a in applications:
+        if a["id"] == id:
+            a["status"] = status
+            break
+
+    return redirect("/applications")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
