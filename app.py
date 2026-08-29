@@ -3,3 +3,7 @@ import hashlib
 import secrets
 from database import engine, Base, SessionLocal
 from models import User, Subsidy, Application
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+if "user_id" not in st.session_state:
+    st.session_state.user_id = None
