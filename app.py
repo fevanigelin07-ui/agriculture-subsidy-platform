@@ -11,3 +11,7 @@ if "user_name" not in st.session_state:
     st.session_state.user_name = None
 Base.metadata.create_all(bind=engine)
 db = SessionLocal()
+if db.query(Subsidy).count() == 0:
+    db.add_all([
+        Subsidy(
+            name="Crop Subsidy",
