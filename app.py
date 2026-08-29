@@ -15,3 +15,8 @@ if db.query(Subsidy).count() == 0:
     db.add_all([
         Subsidy(
             name="Crop Subsidy",
+            description="Financial support for crop cultivation",
+            amount=10000,
+            eligibility="Small and medium farmers"
+        ),
+        Subsidy(
