@@ -20,3 +20,8 @@ if db.query(Subsidy).count() == 0:
             eligibility="Small and medium farmers"
         ),
         Subsidy(
+            name="Equipment Subsidy",
+            description="Support for purchasing agricultural equipment",
+            amount=25000,
+            eligibility="Registered farmers"
+        ),
