@@ -25,3 +25,8 @@ if db.query(Subsidy).count() == 0:
             amount=25000,
             eligibility="Registered farmers"
         ),
+        Subsidy(
+            name="Irrigation Subsidy",
+            description="Support for irrigation facilities",
+            amount=15000,
+            eligibility="Farmers with agricultural land"
