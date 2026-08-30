@@ -46,3 +46,10 @@ with st.form("login_form"):
     login_button = st.form_submit_button("Login")
 if login_button:
     db = SessionLocal()
+        user = (
+        db.query(User)
+        .filter(User.email == login_email)
+        .first()
+    )
+    if user:
+        salt, stored_hash = user.password.split(":", 1)
