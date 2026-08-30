@@ -59,3 +59,9 @@ if login_button:
         if login_hash == stored_hash:
             st.session_state.logged_in = True
             st.session_state.user_id = user.id
+                        st.session_state.user_name = user.name
+            st.success(f"Welcome, {user.name}!")
+        else:
+            st.error("Invalid email or password.")
+    else:
+        st.error("Invalid email or password.")
