@@ -131,4 +131,12 @@ for subsidy in subsidies:
             key=f"land_{subsidy.id}"
         )
         crop = st.text_input(
+                        "Crop",
+            key=f"crop_{subsidy.id}"
+        )
+        apply_button = st.form_submit_button(
+            "Apply for this Subsidy"
+        )
+        if apply_button:
+            user = (
         
