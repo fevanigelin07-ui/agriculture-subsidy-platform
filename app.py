@@ -36,3 +36,8 @@ if db.query(Subsidy).count() == 0:
 
 db.close()
 st.title("🌾 Agriculture Subsidy Application Platform")
+st.header("Farmer Login")
+with st.form("login_form"):
+    login_email = st.text_input("Email")
+    login_password = st.text_input(
+        "Password",
