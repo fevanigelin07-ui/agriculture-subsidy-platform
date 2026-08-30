@@ -41,3 +41,8 @@ with st.form("login_form"):
     login_email = st.text_input("Email")
     login_password = st.text_input(
         "Password",
+        type="password"
+    )
+    login_button = st.form_submit_button("Login")
+if login_button:
+    db = SessionLocal()
