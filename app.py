@@ -65,3 +65,9 @@ if login_button:
             st.error("Invalid email or password.")
     else:
         st.error("Invalid email or password.")
+       db.close()
+if st.session_state.logged_in:
+    st.success(
+        f"Logged in as {st.session_state.user_name}"
+    )
+    if st.button("Logout"):
