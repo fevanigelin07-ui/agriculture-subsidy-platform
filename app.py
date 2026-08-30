@@ -139,4 +139,12 @@ for subsidy in subsidies:
         )
         if apply_button:
             user = (
+                            db.query(User)
+                .filter(User.email == email)
+                .first()
+            )
+            if user is None:
+                st.error(
+                    "Farmer not registered. Please register first."
+                )
         
