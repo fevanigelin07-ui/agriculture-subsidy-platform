@@ -77,3 +77,9 @@ if st.session_state.logged_in:
         st.rerun()
 st.success("Database connected successfully!")
 st.header("Farmer Registration")
+with st.form("registration_form"):
+    name = st.text_input("Name")
+    email = st.text_input("Email")
+    password = st.text_input(
+        "Password",
+        type="password"
