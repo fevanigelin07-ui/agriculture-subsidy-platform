@@ -53,3 +53,9 @@ if login_button:
     )
     if user:
         salt, stored_hash = user.password.split(":", 1)
+                login_hash = hashlib.sha256(
+            (salt + login_password).encode()
+        ).hexdigest()
+        if login_hash == stored_hash:
+            st.session_state.logged_in = True
+            st.session_state.user_id = user.id
