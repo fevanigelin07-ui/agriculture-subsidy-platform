@@ -155,4 +155,12 @@ for subsidy in subsidies:
                     crop=crop,
                     status="Pending"
                 )
+                db.add(application)
+                db.commit()
+                st.success(
+                    "Application submitted successfully!"
+                )
+    st.divider()
+st.header("My Applications")
+
         
