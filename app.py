@@ -117,4 +117,11 @@ for subsidy in subsidies:
     st.write(subsidy.description)
     st.write("Amount: ₹", subsidy.amount)
     st.write(
+                "Eligibility:",
+        subsidy.eligibility
+    )
+    with st.form(f"apply_{subsidy.id}"):
+        email = st.text_input(
+            "Farmer Email",
+            key=f"email_{subsidy.id}"
         
