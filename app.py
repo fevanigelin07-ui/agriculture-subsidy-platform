@@ -171,5 +171,20 @@ if st.session_state.logged_in:
         )
         .all()
     )
+        if my_applications:
+        for application in my_applications:
+            subsidy = (
+                db.query(Subsidy)
+                .filter(
+                    Subsidy.id ==
+                    application.subsidy_id
+                )
+                .first()
+            )
+            st.subheader(
+                subsidy.name
+                if subsidy
+                else "Unknown Subsidy"
+            )
 
         
