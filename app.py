@@ -124,4 +124,11 @@ for subsidy in subsidies:
         email = st.text_input(
             "Farmer Email",
             key=f"email_{subsidy.id}"
+                    )
+        land_area = st.number_input(
+            "Land Area (acres)",
+            min_value=0.0,
+            key=f"land_{subsidy.id}"
+        )
+        crop = st.text_input(
         
