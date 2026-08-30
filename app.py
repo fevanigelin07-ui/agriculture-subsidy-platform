@@ -186,5 +186,95 @@ if st.session_state.logged_in:
                 if subsidy
                 else "Unknown Subsidy"
             )
+                        st.write(
+                "Land Area:",
+                application.land_area,
+                "acres"
+            )
+            st.write(
+                "Crop:",
+                application.crop
+            )
+            st.write(
+                "Status:",
+                application.status
+            )
+            st.divider()
+    else:
+        st.info(
+            "You have not submitted any applications yet."
+        )
+db.close()
+st.header("Admin Dashboard")
+admin_password = st.text_input(
+    "Admin Password",
+    type="password"
+)
+if admin_password == "admin123":
+    st.success("Admin access granted!")
+    admin_db = SessionLocal()
+    applications = (
+        admin_db.query(Application).all()
+    )
+    st.subheader("Subsidy Applications")
+    for application in applications:
+        user = (
+            admin_db.query(User)
+            .filter(User.id == application.user_id)
+            .first()
+        )
+        subsidy = (
+            admin_db.query(Subsidy)
+            .filter(Subsidy.id == application.subsidy_id)
+            .first()
+        )
+        st.write(
+            "Farmer:",
+            user.name if user else "Unknown"
+        )
+        st.write(
+            "Email:",
+            user.email if user else "Unknown"
+        )
+        st.write(
+            "Subsidy:",
+            subsidy.name if subsidy else "Unknown"
+        )
+        st.write(
+            "Land Area:",
+            application.land_area
+        )
+        st.write(
+            "Crop:",
+            application.crop
+        )
+        st.write(
+            "Status:",
+            application.status
+        )
+        col1, col2 = st.columns(2)
+        if col1.button(
+            "Approve",
+            key=f"approve_{application.id}"
+        ):
+            application.status = "Approved"
+            admin_db.commit()
+            st.success(
+                "Application approved!"
+            )
+            st.rerun()
+        if col2.button(
+            "Reject",
+            key=f"reject_{application.id}"
+        ):
+            application.status = "Rejected"
+            admin_db.commit()
+            st.warning(
+                "Application rejected!"
+            )
+            st.rerun()
+        st.divider()
+    admin_db.close()
+
 
         
