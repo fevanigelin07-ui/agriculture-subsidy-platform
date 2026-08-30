@@ -83,3 +83,10 @@ with st.form("registration_form"):
     password = st.text_input(
         "Password",
         type="password"
+            )
+    register = st.form_submit_button("Register")
+if register:
+    db = SessionLocal()
+    existing_user = (
+        db.query(User)
+        .filter(User.email == email)
