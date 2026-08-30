@@ -71,3 +71,9 @@ if st.session_state.logged_in:
         f"Logged in as {st.session_state.user_name}"
     )
     if st.button("Logout"):
+                st.session_state.logged_in = False
+        st.session_state.user_id = None
+        st.session_state.user_name = None
+        st.rerun()
+st.success("Database connected successfully!")
+st.header("Farmer Registration")
