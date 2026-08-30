@@ -147,4 +147,12 @@ for subsidy in subsidies:
                 st.error(
                     "Farmer not registered. Please register first."
                 )
+                            else:
+                application = Application(
+                    user_id=user.id,
+                    subsidy_id=subsidy.id,
+                    land_area=land_area,
+                    crop=crop,
+                    status="Pending"
+                )
         
