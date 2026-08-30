@@ -111,4 +111,10 @@ if register:
     db.close()
 st.header("Available Subsidies")
 db = SessionLocal()
+subsidies = db.query(Subsidy).all()
+for subsidy in subsidies:
+    st.subheader(subsidy.name)
+    st.write(subsidy.description)
+    st.write("Amount: ₹", subsidy.amount)
+    st.write(
         
