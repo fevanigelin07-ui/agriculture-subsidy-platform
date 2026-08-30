@@ -104,4 +104,11 @@ if register:
                 hashlib.sha256(
                     (salt + password).encode()
                 ).hexdigest()
+                    )
+        db.add(new_user)
+        db.commit()
+        st.success("Registration successful!")
+    db.close()
+st.header("Available Subsidies")
+db = SessionLocal()
         
