@@ -97,4 +97,11 @@ if register:
     else:
         salt = secrets.token_hex(16)
         new_user = User(
+                        name=name,
+            email=email,
+            password=
+                salt + ":" +
+                hashlib.sha256(
+                    (salt + password).encode()
+                ).hexdigest()
         
