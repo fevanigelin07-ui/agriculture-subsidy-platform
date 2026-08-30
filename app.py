@@ -30,3 +30,9 @@ if db.query(Subsidy).count() == 0:
             description="Support for irrigation facilities",
             amount=15000,
             eligibility="Farmers with agricultural land"
+                )
+    ])
+    db.commit()
+
+db.close()
+st.title("🌾 Agriculture Subsidy Application Platform")
