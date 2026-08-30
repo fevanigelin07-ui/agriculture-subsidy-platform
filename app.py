@@ -90,3 +90,11 @@ if register:
     existing_user = (
         db.query(User)
         .filter(User.email == email)
+                .first()
+    )
+    if existing_user:
+        st.error("Email already registered.")
+    else:
+        salt = secrets.token_hex(16)
+        new_user = User(
+        
