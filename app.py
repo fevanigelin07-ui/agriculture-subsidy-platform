@@ -162,5 +162,14 @@ for subsidy in subsidies:
                 )
     st.divider()
 st.header("My Applications")
+if st.session_state.logged_in:
+    my_applications = (
+        db.query(Application)
+        .filter(
+            Application.user_id ==
+            st.session_state.user_id
+        )
+        .all()
+    )
 
         
